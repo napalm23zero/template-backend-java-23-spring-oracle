@@ -1,0 +1,58 @@
+{
+  "name": "template-backend-java-23-spring-oracle",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "template-backend",
+  "workspaceFolder": "/workspace",
+  // Extensions to install in the devcontainer
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // AI and IntelliSense - Code completion and assistance
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.intellicode-api-usage-examples",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        // Code Quality and Formatting
+        "esbenp.prettier-vscode",
+        "SonarSource.sonarlint-vscode",
+        "aaron-bond.better-comments",
+        // Java Development Stack
+        "redhat.java",
+        "vscjava.vscode-java-debug",
+        "vscjava.vscode-java-test",
+        "vscjava.vscode-maven",
+        "vmware.vscode-spring-boot",
+        "vscjava.vscode-spring-boot-dashboard",
+        // DevOps and Version Control
+        "mhutchie.git-graph",
+        "ms-azuretools.vscode-docker",
+        // UI and Themes
+        "equinusocio.vsc-material-theme-icons",
+        "zhuangtongfa.material-theme",
+        // Productivity Tools
+        "WakaTime.vscode-wakatime"
+      ]
+    }
+  },
+  // Forward ports so you can access the app from your host machine
+  "forwardPorts": [
+    8060
+  ],
+  // Automatically start these services after the container starts
+  // "postCreateCommand": "mvn clean install",
+  // Use your existing `docker-compose.yaml` networks and volumes
+  "runServices": [
+    "template-backend",
+    "template-database-oracle"
+  ]
+  // Project-specific VS Code settings\
+  // "settings": {
+  //   "java.home": "/usr/lib/jvm/java-23-openjdk",
+  //   "java.configuration.updateBuildConfiguration": "interactive",
+  //   "java.import.gradle.enabled": false,
+  //   "java.import.maven.enabled": true,
+  //   "java.checkstyle.configuration": "/workspace/checkstyle.xml",
+  //   "terminal.integrated.shell.linux": "/bin/bash",
+  //   "editor.formatOnSave": true
+  // }
+}

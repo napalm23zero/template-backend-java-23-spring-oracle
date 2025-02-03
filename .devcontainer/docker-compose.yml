@@ -1,0 +1,65 @@
+services:
+  template-backend:
+    build:
+      context: . # there's a place where the magic happens, and it's right here
+      dockerfile: docker/backend.Dockerfile # this is the receipt for the backend container
+    container_name: template-backend # because "random_container_name_4248s848f" is not a good look
+    image: napalm23zero/template-backend:latest # custom image name because "backend:latest" is for newbies
+    depends_on:
+      - template-database-oracle # database must be up before backend can start
+    ports:
+      - "${APP_EXT_PORT}:${APP_PORT}" # left side is the host machine port, right side is the container port 
+    volumes:
+      - ..:/workspace # your backend stuff lives here
+      - shared-maven-repo:/root/.m2 # caching Maven dependencies because downloading so you don't have to keep downloading them again and again
+    env_file:
+      - .env # top-secret config file, NEVER commit it unless you want to be fired, I will do it just because it is a template
+    networks:
+      - templates
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m" # log files shouldn’t take over your disk, unlike some people’s Chrome tabs
+        max-file: "3"   # keep logs lean; if something breaks, check it before it gets deleted
+    command: >
+      sh -c "trap 'exit 0' TERM; tail -f /dev/null" # Keep the container alive and prevent it from rage quitting
+
+  template-database-oracle:
+    build:
+      context: . # Same deal, this is where the devcontainer voodoo happens
+      dockerfile: docker/database.oracle.Dockerfile # Because databases don’t just appear out of thin air
+    container_name: template-database-oracle # Naming it explicitly because "random_container_42" is chaos
+    image: napalm23zero/template-database-oracle:latest # Because default image names are for NPCs
+    ports:
+      - "${DB_ORACLE_EXT_PORT}:${DB_ORACLE_PORT}" # Classic Oracle DB port; if you change this, be ready for some fun debugging
+    volumes:
+      - template-database-oracle:/opt/oracle/oradata # Persistent storage, because data loss is not fun
+    env_file:
+      - .env # Secrets live here. Guard them like your Wi-Fi password
+    restart: always # Because databases should never ghost us
+    environment:
+      ORACLE_DATABASE: ${ORACLE_DATABASE} 
+      ORACLE_USER: ${ORACLE_USER}
+      ORACLE_PASSWORD: ${ORACLE_PASSWORD}
+    networks:
+      - templates # All our containers talk through this network, like an exclusive VIP club
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM DUAL;' | sqlplus -s SYSTEM/${ORACLE_PASSWORD}@localhost:1521/${ORACLE_DATABASE}"]
+      interval: 30s  # Because we’re impatient and want frequent updates
+      timeout: 10s   # If the DB is taking longer than 10s, something’s deeply wrong
+      retries: 5     # Try 5 times before giving up, just like your average developer
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes: # Because data shouldn't disappear when you stop the container
+  shared-maven-repo:
+    driver: local
+  template-database-oracle:
+    driver: local
+
+networks:
+  templates:
+    driver: bridge # Standard bridge network because we aren’t savages
