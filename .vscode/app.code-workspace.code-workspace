@@ -5,5 +5,54 @@
 			"name": "template-backend-java-23-spring-oracle"
 		}
 	],
-	"settings": {}
+	// General workspace settings
+	"settings": {
+
+		// UI and theme customizations
+		"window.title": "bm-condo-backend-core",
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#252b3b",
+			"titleBar.activeBackground": "#252b3b",
+			"titleBar.activeForeground": "#FFFFFF",
+			"titleBar.inactiveBackground": "#252b3b",
+			"titleBar.border": "#252b3b",
+			"statusBar.background": "#252b3b",
+			"statusBar.foreground": "#FFFFFF",
+			"statusBar.border": "#252b3b",
+			"statusBar.debuggingBackground": "#3b9c38",
+			"statusBar.debuggingForeground": "#FFFFFF",
+			"statusBar.debuggingBorder": "#3b9c38",
+			"statusBar.noFolderBackground": "#252b3b",
+			"statusBar.noFolderForeground": "#FFFFFF",
+			"statusBar.noFolderBorder": "#252b3b"
+		},
+		"workbench.colorTheme": "One Dark Pro Mix",
+		"workbench.iconTheme": "eq-material-theme-icons-light",
+		"editor.fontFamily": "Consolas, 'Courier New', monospace",
+
+		// Terminal settings
+		"terminal.integrated.defaultProfile.linux": "bash",
+		"terminal.integrated.cursorStyle": "line",
+		"terminal.integrated.cursorBlinking": true,
+
+		// Remote development and port forwarding settings
+		"remote.autoForwardPorts": false,
+		"remote.localPortHost": "allInterfaces",
+
+		// Editor and code formatting settings
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": "always"
+		},
+		
+		// Git and version control
+		"git.autofetch": true,
+
+		// Zoom level for window
+		"window.zoomLevel": -1.5,
+
+		// Java specific settings
+		"java.autobuild.enabled": true,
+	}
 }
