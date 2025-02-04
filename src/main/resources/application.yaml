@@ -1,0 +1,5 @@
+spring:
+    application:
+        name: Template Backend - Java 23 | Spring | Oracle
+server:
+    port: ${APP_PORT}
