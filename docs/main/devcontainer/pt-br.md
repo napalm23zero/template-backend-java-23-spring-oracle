@@ -26,11 +26,11 @@ Então, quando você abre seu projeto dentro de um DevContainer (geralmente no V
 
 ## Por Que Você Deveria Se Importar?
 
--   💀 Chega de desculpas do tipo "funciona na minha máquina"
--   🛠 Super fácil para novos devs entrarem no projeto (só clonar e rodar)
--   🔥 Não polui seu sistema com dependências desnecessárias
--   🚀 Torna seu ambiente de desenvolvimento **portável**—roda em qualquer lugar com Docker
--   🎯 Perfeito para projetos open-source e equipes
+- 💀 Chega de desculpas do tipo "funciona na minha máquina"
+- 🛠 Super fácil para novos devs entrarem no projeto (só clonar e rodar)
+- 🔥 Não polui seu sistema com dependências desnecessárias
+- 🚀 Torna seu ambiente de desenvolvimento **portável**—roda em qualquer lugar com Docker
+- 🎯 Perfeito para projetos open-source e equipes
 
 **TL;DR:** DevContainers são ambientes de desenvolvimento pré-configurados dentro do Docker, facilitando sua vida e tornando seu setup à prova de falhas.
 
@@ -53,33 +53,33 @@ Então, quando você abre seu projeto dentro de um DevContainer (geralmente no V
 
 ### **Passo 1: A Magia do DevContainer**
 
--   O **devcontainer.json** é seu livro de feitiços. Ele **diz ao VS Code** como configurar o ambiente de desenvolvimento.
--   Instala **extensões essenciais do VS Code** (ferramentas Java, Copilot, SonarLint, Docker, etc.).
--   **Mapeia portas**, para que seu app e banco de dados se comuniquem sem gritaria.
+- O **devcontainer.json** é seu livro de feitiços. Ele **diz ao VS Code** como configurar o ambiente de desenvolvimento.
+- Instala **extensões essenciais do VS Code** (ferramentas Java, Copilot, SonarLint, Docker, etc.).
+- **Mapeia portas**, para que seu app e banco de dados se comuniquem sem gritaria.
 
 ### **Passo 2: A Invocação dos Containers com Docker Compose**
 
--   O **docker-compose.yml** é seu **círculo de invocação**.
--   Define:
-    -   **Container do backend** → `template-backend`
-    -   **Container do banco de dados** → `template-database-oracle`
--   **Garante que o backend só inicie quando o banco de dados estiver pronto**.
+- O **docker-compose.yml** é seu **círculo de invocação**.
+- Define:
+    - **Container do backend** → `template-backend`
+    - **Container do banco de dados** → `template-database-oracle`
+- **Garante que o backend só inicie quando o banco de dados estiver pronto**.
 
 ### **Passo 3: O Lado Sombrio do `.env`**
 
--   🚡 **NUNCA COMITE ESSE ARQUIVO** (a menos que queira que suas credenciais sejam roubadas).
--   Armazena:
-    -   Credenciais do banco de dados (`ORACLE_USER`, `ORACLE_PASSWORD`).
-    -   Mapeamento de portas (`APP_PORT`, `DB_ORACLE_PORT`).
--   Exemplo de senha: `DarthVader42` (porque senhas fortes são fortes no Lado Sombrio).
+- 🚡 **NUNCA COMITE ESSE ARQUIVO** (a menos que queira que suas credenciais sejam roubadas).
+- Armazena:
+    - Credenciais do banco de dados (`ORACLE_USER`, `ORACLE_PASSWORD`).
+    - Mapeamento de portas (`APP_PORT`, `DB_ORACLE_PORT`).
+- Exemplo de senha: `DarthVader42` (porque senhas fortes são fortes no Lado Sombrio).
 
 ## **🛠️ Configurando**
 
 ## **1️⃣ Instale os Requisitos**
 
--   [Docker](https://www.docker.com/get-started) 🐳
--   [VS Code](https://code.visualstudio.com/) 🖥️
--   [Extensão Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- [Docker](https://www.docker.com/get-started) 🐳
+- [VS Code](https://code.visualstudio.com/) 🖥️
+- [Extensão Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
 ## **2️⃣ Clone o Repositório**
 
@@ -94,8 +94,8 @@ cd template-backend-java-23-spring-oracle
 code .
 ```
 
--   **O VS Code deve sugerir “Reabrir no Container.”**
--   Clique nisso. **Se não aparecer, pressione** `Ctrl + Shift + P` → `Reopen in Container`.
+- **O VS Code deve sugerir “Reabrir no Container.”**
+- Clique nisso. **Se não aparecer, pressione** `Ctrl + Shift + P` → `Reopen in Container`.
 
 Backend + Banco de Dados **ganham vida magicamente**.
 
@@ -103,15 +103,15 @@ Backend + Banco de Dados **ganham vida magicamente**.
 
 ## **🖥️ Container do Backend (`backend.Dockerfile`)**
 
--   Baseado em **OpenJDK 23 + Maven**.
--   **Monta o workspace** para sincronizar suas mudanças de código.
--   Faz cache das dependências do Maven (porque baixá-las toda vez é coisa de masoquista).
+- Baseado em **OpenJDK 23 + Maven**.
+- **Monta o workspace** para sincronizar suas mudanças de código.
+- Faz cache das dependências do Maven (porque baixá-las toda vez é coisa de masoquista).
 
 ## **🗀 Container do Banco de Dados (`database.oracle.Dockerfile`)**
 
--   Roda uma instância **Oracle 19c XE**.
--   Tem **armazenamento persistente**, então seu banco não desaparece quando o container para.
--   Usa **healthchecks** para garantir que está funcionando.
+- Roda uma instância **Oracle 19c XE**.
+- Tem **armazenamento persistente**, então seu banco não desaparece quando o container para.
+- Usa **healthchecks** para garantir que está funcionando.
 
 ## **👀 Portas e Rede**
 

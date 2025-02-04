@@ -26,11 +26,11 @@ So when you open your project inside a DevContainer (usually in VS Code), **BOOM
 
 ## Why You Should Care?
 
--   💀 No more "works on my machine" excuses
--   🛠 Super easy to onboard new devs (just clone and go)
--   🔥 No cluttering your actual system with dependencies
--   🚀 Makes your dev setup **portable**—run it anywhere with Docker
--   🎯 Perfect for open-source projects and teams
+- 💀 No more "works on my machine" excuses
+- 🛠 Super easy to onboard new devs (just clone and go)
+- 🔥 No cluttering your actual system with dependencies
+- 🚀 Makes your dev setup **portable**—run it anywhere with Docker
+- 🎯 Perfect for open-source projects and teams
 
 **TL;DR:** DevContainers are like pre-configured virtual dev environments inside Docker, making your life easier and your setup foolproof.
 
@@ -53,33 +53,33 @@ So when you open your project inside a DevContainer (usually in VS Code), **BOOM
 
 ### **Step 1: DevContainer Magic**
 
--   **devcontainer.json** is your wizard’s spellbook. It **tells VS Code** how to set up the dev environment.
--   It installs **essential VS Code extensions** (Java tools, Copilot, SonarLint, Docker, etc.).
--   **Maps ports**, so your app and database can talk without screaming.
+- **devcontainer.json** is your wizard’s spellbook. It **tells VS Code** how to set up the dev environment.
+- It installs **essential VS Code extensions** (Java tools, Copilot, SonarLint, Docker, etc.).
+- **Maps ports**, so your app and database can talk without screaming.
 
 ### **Step 2: Container Conjuring with Docker Compose**
 
--   **docker-compose.yml** is your **summoning circle**.
--   Defines:
-    -   **Backend container** → `template-backend`
-    -   **Database container** → `template-database-oracle`
--   **Ensures backend starts only when the database is ready**.
+- **docker-compose.yml** is your **summoning circle**.
+- Defines:
+    - **Backend container** → `template-backend`
+    - **Database container** → `template-database-oracle`
+- **Ensures backend starts only when the database is ready**.
 
 ### **Step 3: The `.env` Dark Side Secrets**
 
--   🚡 **NEVER COMMIT THIS FILE** (unless you want your credentials stolen).
--   Stores:
-    -   Database credentials (`ORACLE_USER`, `ORACLE_PASSWORD`).
-    -   Port mappings (`APP_PORT`, `DB_ORACLE_PORT`).
--   Password example: `DarthVader42` (because strong passwords are strong with the Dark Side).
+- 🚡 **NEVER COMMIT THIS FILE** (unless you want your credentials stolen).
+- Stores:
+    - Database credentials (`ORACLE_USER`, `ORACLE_PASSWORD`).
+    - Port mappings (`APP_PORT`, `DB_ORACLE_PORT`).
+- Password example: `DarthVader42` (because strong passwords are strong with the Dark Side).
 
 ## **🛠️ Setting Up**
 
 ## **1️⃣ Install Requirements**
 
--   [Docker](https://www.docker.com/get-started) 🐳
--   [VS Code](https://code.visualstudio.com/) 🖥️
--   [Remote - Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- [Docker](https://www.docker.com/get-started) 🐳
+- [VS Code](https://code.visualstudio.com/) 🖥️
+- [Remote - Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
 ## **2️⃣ Clone the Repository**
 
@@ -94,8 +94,8 @@ cd template-backend-java-23-spring-oracle
 code .
 ```
 
--   **VS Code should prompt you to “Reopen in Container.”**
--   Click it. **If it doesn’t, hit** `Ctrl + Shift + P` → `Reopen in Container`.
+- **VS Code should prompt you to “Reopen in Container.”**
+- Click it. **If it doesn’t, hit** `Ctrl + Shift + P` → `Reopen in Container`.
 
 Backend + Database **magically come to life**.
 
@@ -103,15 +103,15 @@ Backend + Database **magically come to life**.
 
 ## **🖥️ Backend Container (`backend.Dockerfile`)**
 
--   Based on **OpenJDK 23 + Maven**.
--   **Mounts workspace** to sync your code changes.
--   Caches Maven dependencies (because downloading them every time is for masochists).
+- Based on **OpenJDK 23 + Maven**.
+- **Mounts workspace** to sync your code changes.
+- Caches Maven dependencies (because downloading them every time is for masochists).
 
 ## **🗀 Database Container (`database.oracle.Dockerfile`)**
 
--   Runs an **Oracle 19c XE instance**.
--   Has **persistent storage**, so your DB doesn’t vanish when the container stops.
--   Uses **healthchecks** to ensure it’s alive.
+- Runs an **Oracle 19c XE instance**.
+- Has **persistent storage**, so your DB doesn’t vanish when the container stops.
+- Uses **healthchecks** to ensure it’s alive.
 
 ## **👀 Ports & Networking**
 

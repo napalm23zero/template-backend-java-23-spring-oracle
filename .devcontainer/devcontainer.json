@@ -1,47 +1,41 @@
 {
-  "name": "template-backend-java-23-spring-oracle",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "template-backend",
-  "workspaceFolder": "/workspace",
-  // Extensions to install in the devcontainer
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        // AI and IntelliSense - Code completion and assistance
-        "VisualStudioExptTeam.vscodeintellicode",
-        "VisualStudioExptTeam.intellicode-api-usage-examples",
-        "GitHub.copilot",
-        "GitHub.copilot-chat",
-        // Code Quality and Formatting
-        "esbenp.prettier-vscode",
-        "SonarSource.sonarlint-vscode",
-        "aaron-bond.better-comments",
-        // Java Development Stack
-        "redhat.java",
-        "vscjava.vscode-java-debug",
-        "vscjava.vscode-java-test",
-        "vscjava.vscode-maven",
-        "vmware.vscode-spring-boot",
-        "vscjava.vscode-spring-boot-dashboard",
-        // DevOps and Version Control
-        "mhutchie.git-graph",
-        "ms-azuretools.vscode-docker",
-        // UI and Themes
-        "equinusocio.vsc-material-theme-icons",
-        "zhuangtongfa.material-theme",
-        // Productivity Tools
-        "WakaTime.vscode-wakatime"
-      ]
-    }
-  },
-  // Forward ports so you can access the app from your host machine
-  "forwardPorts": [
-    8060
-  ],
-  // Use your existing `docker-compose.yaml` networks and volumes
-  "runServices": [
-    "template-backend",
-    "template-database-oracle"
-  ]
-
+	"name": "template-backend-java-23-spring-oracle",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "template-backend",
+	"workspaceFolder": "/workspace",
+	// Extensions to install in the devcontainer
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// AI and IntelliSense - Code completion and assistance
+				"VisualStudioExptTeam.vscodeintellicode",
+				"VisualStudioExptTeam.intellicode-api-usage-examples",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				// Code Quality and Formatting
+				"esbenp.prettier-vscode",
+				"SonarSource.sonarlint-vscode",
+				"aaron-bond.better-comments",
+				// Java Development Stack
+				"redhat.java",
+				"vscjava.vscode-java-debug",
+				"vscjava.vscode-java-test",
+				"vscjava.vscode-maven",
+				"vmware.vscode-spring-boot",
+				"vscjava.vscode-spring-boot-dashboard",
+				// DevOps and Version Control
+				"mhutchie.git-graph",
+				"ms-azuretools.vscode-docker",
+				// UI and Themes
+				"equinusocio.vsc-material-theme-icons",
+				"zhuangtongfa.material-theme",
+				// Productivity Tools
+				"WakaTime.vscode-wakatime"
+			]
+		}
+	},
+	// Forward ports so you can access the app from your host machine
+	"forwardPorts": [8060],
+	// Use your existing `docker-compose.yaml` networks and volumes
+	"runServices": ["template-backend", "template-database-oracle"]
 }
